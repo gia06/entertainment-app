@@ -7,12 +7,20 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import Root from "./Root";
+import Login from "./components/Login";
+import Home from "./components/Home";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/*" element={}>
-      <Route path="/home" element={<Navigate to="/home" />}></Route>
-    </Route>
+    <>
+      <Route path="/*" element={<Root />}>
+        <Route path="home" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Login />} />
+        <Route path="*" element={<Navigate to="/home" />}></Route>
+      </Route>
+    </>
   )
 );
 
