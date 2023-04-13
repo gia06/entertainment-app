@@ -68,8 +68,6 @@ const FormContainer = styled.form`
 `;
 
 const Form = styled.div`
-  /* margin: 32px; */
-
   h1 {
     color: white;
   }
@@ -82,6 +80,7 @@ const Form = styled.div`
     padding: 0px 0px 18px 16px;
     background: ${({ theme }) => theme.formBackground};
     caret-color: ${({ theme }) => theme.caretColor};
+    color: #ffffff;
 
     :nth-child(2) {
       margin-top: 40px;
