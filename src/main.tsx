@@ -10,6 +10,7 @@ import {
 import Root from "./Root";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Register from "./components/Register";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +18,7 @@ const router = createBrowserRouter(
       <Route path="/*" element={<Root />}>
         <Route path="home" element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="register" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="*" element={<Navigate to="/home" />}></Route>
       </Route>
     </>
