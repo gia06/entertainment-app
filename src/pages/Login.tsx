@@ -6,25 +6,25 @@ function Login() {
   return (
     <LoginContainer>
       <Logo src={logo} />
-      <FormContainer>
-        <Form>
+      <LoginFormWrapper>
+        <LoginForm onSubmit={(e) => e.preventDefault()}>
           <h1>Login</h1>
           <input type="email" placeholder="Email address" />
           <input type="password" placeholder="Password" />
-          <LoginButton>Login to your account</LoginButton>
+          <LoginButton type="submit">Login to your account</LoginButton>
           <SignUp>
             Don’t have an account?
             <Link to="/register">Sign Up</Link>
           </SignUp>
-        </Form>
-      </FormContainer>
+        </LoginForm>
+      </LoginFormWrapper>
     </LoginContainer>
   );
 }
 
 export default Login;
 
-const LoginContainer = styled.div`
+export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,7 @@ const LoginContainer = styled.div`
   }
 `;
 
-const Logo = styled.img`
+export const Logo = styled.img`
   margin-top: 78px;
 
   @media (max-width: 768px) {
@@ -50,7 +50,7 @@ const Logo = styled.img`
   }
 `;
 
-const FormContainer = styled.form`
+export const LoginFormWrapper = styled.div`
   width: 400px;
   height: 373px;
   margin-top: 83px;
@@ -67,7 +67,7 @@ const FormContainer = styled.form`
   }
 `;
 
-const Form = styled.div`
+export const LoginForm = styled.form`
   h1 {
     color: white;
   }
@@ -99,7 +99,7 @@ const Form = styled.div`
   }
 `;
 
-const LoginButton = styled.button`
+export const LoginButton = styled.button`
   width: 100%;
   height: 48px;
   margin-top: 40px;
@@ -113,7 +113,7 @@ const LoginButton = styled.button`
   line-height: 19px;
 `;
 
-const SignUp = styled.p`
+export const SignUp = styled.p`
   width: 100%;
   text-align: center;
   margin-top: 24px;
