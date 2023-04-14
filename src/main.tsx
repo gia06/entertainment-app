@@ -8,9 +8,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Root from "./Root";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 import Home from "./components/Home";
-import Register from "./components/Register";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
