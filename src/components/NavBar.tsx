@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import SVG from "react-inlinesvg";
 
 function NavBar() {
   return (
@@ -10,19 +11,19 @@ function NavBar() {
         </Link>
 
         <Link to="home">
-          <img src="assets/icon-nav-home.svg"></img>
+          <NavIcon src="assets/icon-nav-home.svg" />
         </Link>
 
         <Link to="movies">
-          <img src="assets/icon-nav-movies.svg"></img>
+          <NavIcon src="assets/icon-nav-movies.svg" />
         </Link>
 
         <Link to="tv-series">
-          <img src="assets/icon-nav-tv-series.svg"></img>
+          <NavIcon src="assets/icon-nav-tv-series.svg" />
         </Link>
 
         <Link to="bookmarks">
-          <img src="assets/icon-nav-bookmark.svg"></img>
+          <NavIcon src="assets/icon-nav-bookmark.svg" />
         </Link>
       </LinkContainer>
 
@@ -71,4 +72,12 @@ const LinkContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 40px;
+`;
+
+const NavIcon = styled(SVG)`
+  :hover {
+    & path {
+      fill: #fc4747;
+    }
+  }
 `;
