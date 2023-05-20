@@ -9,14 +9,20 @@ import {
 } from "react-router-dom";
 import Root from "./Root";
 import Login from "./pages/Login";
-import Home from "./components/Home";
 import Register from "./pages/Register";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/*" element={<Root />}>
-        <Route path="home" element={<Home />} />
+        <Route path="home/*" element={<Home />}>
+          <Route path="trending" element={<Login />} />
+          <Route path="movies" element={<Login />} />
+          <Route path="tv-series" element={<Login />} />
+          <Route path="bookmarks" element={<Login />} />
+          <Route path="*" element={<Navigate to="/home" />}></Route>
+        </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="*" element={<Navigate to="/home" />}></Route>

@@ -1,11 +1,20 @@
 import "styled-components";
 
+interface Colors {
+  backgroundColor: string;
+  formBackground: string;
+  caretColor: string;
+  inputBorder: string;
+  submitButton: string;
+}
+
+interface Svgs {
+  siteLogo: string;
+}
+
 declare module "styled-components" {
   export interface DefaultTheme {
-    backgroundColor: string;
-    formBackground: string;
-    caretColor: string;
-    inputBorder: string;
-    submitButton: string;
+    colors: Colors;
+    svgs: Svgs;
   }
 }
