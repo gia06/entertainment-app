@@ -5,11 +5,11 @@ function NavBar() {
   return (
     <NavBarContainer>
       <LinkContainer>
-        <Link to="home/trending">
+        <Link to="home">
           <img src="assets/logo.svg"></img>
         </Link>
 
-        <Link to="trending">
+        <Link to="home">
           <img src="assets/icon-nav-home.svg"></img>
         </Link>
 
@@ -45,6 +45,12 @@ const NavBarContainer = styled.nav`
   margin: 32px 0px 32px 32px;
   background-color: #161d2f;
   border-radius: 20px;
+
+  a {
+    /* // * for removing highlight on mobile */
+    /* -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; */
+  }
 
   a:nth-child(1) {
     margin: 35px 0px 35px;
