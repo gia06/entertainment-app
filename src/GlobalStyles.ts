@@ -7,6 +7,11 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family: 'Outfit', sans-serif;
   }
+
+  body {
+    background: ${({ theme }) => theme.colors.backgroundColor};
+    /* overflow: hidden; */
+  }
 `;
 
 export default GlobalStyles;

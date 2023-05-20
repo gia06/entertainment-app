@@ -9,8 +9,8 @@ function Login() {
       <LoginFormWrapper>
         <LoginForm onSubmit={(e) => e.preventDefault()}>
           <h1>Login</h1>
-          <input type="email" placeholder="Email address" />
-          <input type="password" placeholder="Password" />
+          <LoginInput type="email" placeholder="Email address" />
+          <LoginInput type="password" placeholder="Password" />
           <LoginButton type="submit">Login to your account</LoginButton>
           <SignUp>
             Don’t have an account?
@@ -56,10 +56,7 @@ export const LoginFormWrapper = styled.div`
   margin-top: 83px;
   padding: 32px;
   border-radius: 20px;
-  background: ${({ theme }) => theme.formBackground};
-
-  @media (max-width: 768px) {
-  }
+  background: ${({ theme }) => theme.colors.formBackground};
 
   @media (max-width: 400px) {
     width: 327px;
@@ -71,31 +68,31 @@ export const LoginForm = styled.form`
   h1 {
     color: white;
   }
+`;
 
-  input {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid ${({ theme }) => theme.inputBorder};
-    outline: none;
-    padding: 0px 0px 18px 16px;
-    background: ${({ theme }) => theme.formBackground};
-    caret-color: ${({ theme }) => theme.caretColor};
-    color: #ffffff;
+export const LoginInput = styled.input`
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.inputBorder};
+  outline: none;
+  padding: 0px 0px 18px 16px;
+  background: transparent;
+  caret-color: ${({ theme }) => theme.colors.caretColor};
+  color: #ffffff;
 
-    :nth-child(2) {
-      margin-top: 40px;
-    }
+  :nth-child(2) {
+    margin-top: 40px;
+  }
 
-    :nth-child(3) {
-      margin-top: 24px;
-    }
+  :nth-child(3) {
+    margin-top: 24px;
+  }
 
-    ::placeholder {
-      color: #ffffff80;
-      font-weight: 300;
-      font-size: 15px;
-      line-height: 19px;
-    }
+  ::placeholder {
+    color: #ffffff80;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 19px;
   }
 `;
 
@@ -103,14 +100,19 @@ export const LoginButton = styled.button`
   width: 100%;
   height: 48px;
   margin-top: 40px;
+  border: none;
   border-radius: 6px;
-  background: ${({ theme }) => theme.submitButton};
+  background: ${({ theme }) => theme.colors.submitButton};
   color: #ffffff;
-  padding: 14px 0px 15px 0px;
-
+  cursor: pointer;
   font-weight: 300;
   font-size: 15px;
   line-height: 19px;
+
+  :hover {
+    background-color: #ffffff;
+    color: #10141e;
+  }
 `;
 
 export const SignUp = styled.p`
@@ -121,7 +123,7 @@ export const SignUp = styled.p`
 
   a,
   a:visited {
-    color: ${({ theme }) => theme.submitButton};
+    color: ${({ theme }) => theme.colors.submitButton};
     text-decoration: none;
     margin-left: 9px;
   }
