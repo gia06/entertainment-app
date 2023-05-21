@@ -1,8 +1,22 @@
-import React from "react";
-import NavBar from "../components/NavBar";
+import styled from "styled-components";
 
 function Home() {
-  return <></>;
+  return (
+    <HomeContainer>
+      {/* <SearchBarContainer>
+        <img src="assets/icon-search.svg" />
+        <SearchInput type="text" />
+      </SearchBarContainer> */}
+    </HomeContainer>
+  );
 }
 
 export default Home;
+
+const HomeContainer = styled.div``;
+
+const SearchBarContainer = styled.div`
+  position: absolute;
+`;
+
+const SearchInput = styled.input``;

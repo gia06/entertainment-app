@@ -2,21 +2,21 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SVG from "react-inlinesvg";
 import { useState } from "react";
+import { NavIconProps } from "../types/styles";
 
 function NavBar() {
   const [selectedLink, setSelectedLink] = useState<string>("home");
 
   return (
     <NavBarContainer>
+      <Link to="home">
+        <img src="assets/logo.svg"></img>
+      </Link>
       <LinkContainer>
-        <Link to="home">
-          <img src="assets/logo.svg"></img>
-        </Link>
-
         <Link to="home">
           <NavIcon
             src="assets/icon-nav-home.svg"
-            isSelected={selectedLink === "home"}
+            $isSelected={selectedLink === "home"}
             onClick={() => setSelectedLink("home")}
           />
         </Link>
@@ -24,7 +24,7 @@ function NavBar() {
         <Link to="movies">
           <NavIcon
             src="assets/icon-nav-movies.svg"
-            isSelected={selectedLink === "movies"}
+            $isSelected={selectedLink === "movies"}
             onClick={() => setSelectedLink("movies")}
           />
         </Link>
@@ -32,7 +32,7 @@ function NavBar() {
         <Link to="tv-series">
           <NavIcon
             src="assets/icon-nav-tv-series.svg"
-            isSelected={selectedLink === "tv-series"}
+            $isSelected={selectedLink === "tv-series"}
             onClick={() => setSelectedLink("tv-series")}
           />
         </Link>
@@ -40,13 +40,18 @@ function NavBar() {
         <Link to="bookmarks">
           <NavIcon
             src="assets/icon-nav-bookmark.svg"
-            isSelected={selectedLink === "bookmarks"}
+            $isSelected={selectedLink === "bookmarks"}
             onClick={() => setSelectedLink("bookmarks")}
           />
         </Link>
       </LinkContainer>
 
-      <img id="avatar" src="assets/image-avatar.png" />
+      <Avatar
+        id="avatar"
+        src="assets/image-avatar.png"
+        draggable={false}
+        onDragStart={(event) => event.preventDefault()}
+      />
     </NavBarContainer>
   );
 }
@@ -58,11 +63,12 @@ const NavBarContainer = styled.nav`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
   width: 96px;
   height: calc(100vh - 64px);
-
-  margin: 32px 0px 32px 32px;
+  padding: 35px 0px 32px 0px;
+  position: absolute;
+  top: 35px;
+  left: 32px;
   background-color: #161d2f;
   border-radius: 20px;
 
@@ -72,26 +78,23 @@ const NavBarContainer = styled.nav`
     -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
   } */
 
-  a:nth-child(1) {
-    margin: 35px 0px 35px;
+  a:first-child {
+    @media (max-width: 768px) {
+      margin: 0;
+    }
   }
 
-  #avatar {
-    width: 40px;
-    border-radius: 50%;
-    border: 1px solid white;
-    margin-bottom: 32px;
-    cursor: pointer;
+  @media (max-width: 768px) {
+    width: calc(100vw - 50px);
+    height: 72px;
+    flex-direction: row;
+    padding: 0px 16px 0px 24px;
   }
 `;
 
-interface NavIconProps {
-  isSelected: boolean;
-}
-
 const NavIcon = styled(SVG)<NavIconProps>`
   & path {
-    fill: ${({ isSelected }) => (isSelected ? "white" : null)};
+    fill: ${({ $isSelected }) => ($isSelected ? "white" : null)};
   }
 `;
 
@@ -101,10 +104,30 @@ const LinkContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 40px;
+  position: absolute;
+  top: 135.6px;
 
-  ${NavIcon}:hover {
-    & path {
-      fill: #fc4747;
+  @media (min-width: 768px) {
+    ${NavIcon}:hover {
+      & path {
+        fill: #fc4747;
+      }
     }
   }
+
+  @media (max-width: 768px) {
+    position: relative;
+    top: 0;
+    flex-direction: row;
+    justify-self: center;
+    gap: 32px;
+  }
+`;
+
+const Avatar = styled.img`
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid white;
+  user-select: none;
+  cursor: pointer;
 `;
