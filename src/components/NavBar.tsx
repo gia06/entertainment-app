@@ -12,6 +12,7 @@ function NavBar() {
       <Link to="home">
         <img src="assets/logo.svg"></img>
       </Link>
+
       <LinkContainer>
         <Link to="home">
           <NavIcon
@@ -78,23 +79,26 @@ const NavBarContainer = styled.nav`
     -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
   } */
 
-  a:first-child {
-    @media (max-width: 768px) {
-      margin: 0;
-    }
-  }
-
   @media (max-width: 768px) {
     width: calc(100vw - 50px);
     height: 72px;
     flex-direction: row;
     padding: 0px 16px 0px 24px;
   }
-`;
 
-const NavIcon = styled(SVG)<NavIconProps>`
-  & path {
-    fill: ${({ $isSelected }) => ($isSelected ? "white" : null)};
+  @media (max-width: 400px) {
+    width: 100%;
+    height: 56px;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    gap: 24px;
+    padding: 0px 16px;
+
+    img:first-child {
+      width: 25px;
+      height: 20px;
+    }
   }
 `;
 
@@ -107,20 +111,29 @@ const LinkContainer = styled.div`
   position: absolute;
   top: 135.6px;
 
+  @media (max-width: 768px) {
+    position: relative;
+    top: 0;
+    flex-direction: row;
+    gap: 32px;
+  }
+`;
+
+const NavIcon = styled(SVG)<NavIconProps>`
+  & path {
+    fill: ${({ $isSelected }) => ($isSelected ? "white" : null)};
+  }
+
   @media (min-width: 768px) {
-    ${NavIcon}:hover {
+    :hover {
       & path {
         fill: #fc4747;
       }
     }
   }
 
-  @media (max-width: 768px) {
-    position: relative;
-    top: 0;
-    flex-direction: row;
-    justify-self: center;
-    gap: 32px;
+  @media (max-width: 400px) {
+    transform: scale(0.8);
   }
 `;
 
@@ -130,4 +143,14 @@ const Avatar = styled.img`
   border: 1px solid white;
   user-select: none;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+
+  @media (max-width: 400px) {
+    width: 24px;
+    height: 24px;
+  }
 `;
