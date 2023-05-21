@@ -9,3 +9,7 @@ export interface InputProps {
   isError: IsError;
   // isError: boolean; //FieldError | undefined;
 }
+
+export interface NavIconProps {
+  $isSelected: boolean;
+}
