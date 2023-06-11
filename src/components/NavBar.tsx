@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import SVG from "react-inlinesvg";
-import { useState } from "react";
 import { NavIconProps } from "../types/styles";
 
 function NavBar() {
-  const [selectedLink, setSelectedLink] = useState<string>("home");
+  const selectedLink = useLocation().pathname.slice(1);
 
   return (
     <NavBarContainer>
@@ -18,7 +17,6 @@ function NavBar() {
           <NavIcon
             src="assets/icon-nav-home.svg"
             $isSelected={selectedLink === "home"}
-            onClick={() => setSelectedLink("home")}
           />
         </Link>
 
@@ -26,7 +24,6 @@ function NavBar() {
           <NavIcon
             src="assets/icon-nav-movies.svg"
             $isSelected={selectedLink === "movies"}
-            onClick={() => setSelectedLink("movies")}
           />
         </Link>
 
@@ -34,7 +31,6 @@ function NavBar() {
           <NavIcon
             src="assets/icon-nav-tv-series.svg"
             $isSelected={selectedLink === "tv-series"}
-            onClick={() => setSelectedLink("tv-series")}
           />
         </Link>
 
@@ -42,11 +38,11 @@ function NavBar() {
           <NavIcon
             src="assets/icon-nav-bookmark.svg"
             $isSelected={selectedLink === "bookmarks"}
-            onClick={() => setSelectedLink("bookmarks")}
           />
         </Link>
       </LinkContainer>
 
+      {/* // TODO: probably will change to log-in/sing-out functionality */}
       <Avatar
         id="avatar"
         src="assets/image-avatar.png"
@@ -72,6 +68,7 @@ const NavBarContainer = styled.nav`
   left: 32px;
   background-color: #161d2f;
   border-radius: 20px;
+  user-select: none;
 
   /* // * for removing highlight on mobile */
   /* a {
